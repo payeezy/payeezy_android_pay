@@ -1,4 +1,4 @@
-# Android Pay – Payeezy Integration
+# Android Pay – Payeezy Integration Guide
 
 The document describes how an Android application can use Payeezy to process an Android Pay transaction.
 
@@ -127,11 +127,11 @@ The request uses a REST POST message with a JSON payload. As mentioned before, t
 | API Key | The apikey HTTP header |
 | Token | The token HTTP header |
 | Public Key Hash | Used in the request payload |
-| API Secret | Used to compute the HMAC. The HMAC is added to the request through three few HTTP headers. |
+| API Secret | Used to compute the HMAC. The HMAC is added to the request through three HTTP headers. |
 
 ## The Payeezy Request
 
-For a full explanation of the Payeezy API please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/apis](https://developer.payeezy.com/apis). Following is an example of a Payeezy request payload:
+For a full explanation of the Payeezy API please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/payeezy-api/apis/post/transactions](https://developer.payeezy.com/payeezy-api/apis/post/transactions). Following is an example of a Payeezy request payload:
 
 ```
 {
@@ -201,4 +201,4 @@ The response from the Payeezy servers describes the results of the transaction. 
       "gateway_message":"Transaction Normal"
 }
 ```
-For an explanation of the response fields please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/apis](https://developer.payeezy.com/apis).
+For an explanation of the response fields please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/payeezy-api/apis/post/transactions](https://developer.payeezy.com/payeezy-api/apis/post/transactions).
