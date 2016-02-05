@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/lblConnected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#FF0000"
+        android:text="@string/is_connected_q"
+        android:textColor="#FFF"
+        android:textSize="15sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/amountLabel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="95dp"
+            android:layout_marginStart="95dp"
+            android:text="@string/amount"
+            android:labelFor="@+id/amount"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@id/amountLabel"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/amountLabel"
+            android:ems="5"
+            android:inputType="numberDecimal"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="#009dff"
+        android:text="@string/buy"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

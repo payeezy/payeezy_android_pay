@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:ThemeOverlay.Material.Light">
+    </style>
+
+    <style name="BikestoreWalletFragmentDetailsTextAppearance">
+        <item name="android:textColor">@color/wallet_details_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="BikestoreWalletFragmentDetailsHeaderTextAppearance"
+        parent="BikestoreWalletFragmentDetailsTextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+</resources>

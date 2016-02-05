@@ -1,0 +1,10 @@
+<resources>
+    <color name="separator">#FF909090</color>
+    <color name="promo_background">#B1B7C1</color>
+    <color name="promo_item_label_color">#BBBBBB</color>
+    <color name="promo_item_label_background">#99444444</color>
+    <color name="wallet_details_color">#000000</color>
+    <color name="wallet_dark_grey">#666666</color>
+    <color name="bikestore_button_text">#000000</color>
+    <color name="bikestore_white">#F0F0F0</color>
+</resources>

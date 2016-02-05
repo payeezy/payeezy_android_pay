@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">"Android Pay Test"</string>
+
+    <!--<string name="account_name">com.firstdata.CUSTOMER</string>-->
+    <string name="account_name">com.google.android.gms.samples.wallet.KEY_USERNAME</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="loading"><![CDATA[Loading&#8230;]]></string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="title_checkout">Checkout</string>
+    <string name="title_confirmation">Order Confirmation</string>
+    <string name="is_connected_q">is connected?</string>
+    <string name="response_hint">The response message from FirstAPI</string>
+    <string name="quit">Quit</string>
+    <string name="amount">Amount:</string>
+    <string name="environment">Environment:</string>
+    <string name="buy">Buy</string>
+    <string name="network_connected">Connected to Network</string>
+    <string name="network_not_connected">No network connection</string>
+
+    <string-array name="env_values" >
+        <item>INT</item>
+        <item>QA</item>
+        <item>CERT</item>
+    </string-array>
+
+</resources>
