@@ -64,8 +64,8 @@ Sample MaskedWalletRequest Code:
       PaymentMethodTokenizationParameters parameters =
            PaymentMethodTokenizationParameters._newBuilder_()
              .setPaymentMethodTokenizationType(
-                     PaymentMethodTokenizationType.NETWORK\_TOKEN)
-             .addParameter( **"** publicKey **"** , Constants.FIRST\_DATA\_PUBLIC\_KEY)
+                     PaymentMethodTokenizationType.NETWORK_TOKEN)
+             .addParameter( **"** publicKey **"** , Constants.FIRST_DATA_PUBLIC_KEY)
              .build();
 
       MaskedWalletRequest.Builder builder = MaskedWalletRequest.newBuilder()
@@ -83,7 +83,7 @@ The Full Wallet request uses the Masked Wallet retrieved in the previous step.
       FullWalletRequest fullWalletRequest = FullWalletRequest.newBuilder()
                   .setGoogleTransactionId(googleTransactionId)
                   .setCart(Cart._newBuilder_()
-                      .setCurrencyCode(Constants.CURRENCY\_CODE\_USD)
+                      .setCurrencyCode(Constants.CURRENCY_CODE_USD)
                       .setTotalPrice(mAmount)
                       .setLineItems(lineItems)
                       .build())
@@ -91,7 +91,7 @@ The Full Wallet request uses the Masked Wallet retrieved in the previous step.
 
       Wallet.Payments.loadFullWallet(mGoogleApiClient,
                    fullWalletRequest,
-                   REQUEST\_CODE\_RESOLVE\_LOAD\_FULL\_WALLET);
+                   REQUEST_CODE_RESOLVE_LOAD_FULL_WALLET);
 ```
 Once the Full Wallet is received, the Payment Method Token can be extracted and parsed:
 
@@ -135,11 +135,11 @@ For a full explanation of the Payeezy API please refer to the Payeezy Developer 
 
 ```
 {
-   "currency\_code":"USD",
+   "currency_code":"USD",
    "amount":"10000",
-   "merchant\_ref":"orderid",
+   "merchant_ref":"orderid",
    "method":"3DS",
-   "transaction\_type":"purchase",
+   "transaction_type":"purchase",
    "3DS":{
       "header":{
         "publicKeyHash":"QAjHE+t/4YUVEUpoyZkkuNHJ8eap4= **",**
@@ -181,24 +181,24 @@ The response from the Payeezy servers describes the results of the transaction. 
 
 ```
 {
-      "correlation\_id":"227.1448293118225",
-      "transaction\_status":"approved",
-      "validation\_status":"success",
-      "transaction\_type":"purchase",
-      "transaction\_id":"222078",
-      "transaction\_tag":"2283767",
+      "correlation_id":"227.1448293118225",
+      "transaction_status":"approved",
+      "validation_status":"success",
+      "transaction_type":"purchase",
+      "transaction_id":"222078",
+      "transaction_tag":"2283767",
       "method":"3ds",
       "amount":"1222",
       "currency":"USD",
       "card":{
          "type":"VISA",
-         "cardholder\_name":"Not Provided",
-         "card\_number":"XXXXXXXX",
-         "exp\_date":"0116"},
-      "bank\_resp\_code":"100",
-      "bank\_message":"Approved",
-      "gateway\_resp\_code":"00",
-      "gateway\_message":"Transaction Normal"
+         "cardholder_name":"Not Provided",
+         "card_number":"XXXXXXXX",
+         "exp_date":"0116"},
+      "bank_resp\_code":"100",
+      "bank_message":"Approved",
+      "gateway_resp_code":"00",
+      "gateway_message":"Transaction Normal"
 }
 ```
 For an explanation of the response fields please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/apis](https://developer.payeezy.com/apis).
