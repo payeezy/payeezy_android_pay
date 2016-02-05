@@ -195,7 +195,7 @@ The response from the Payeezy servers describes the results of the transaction. 
          "cardholder_name":"Not Provided",
          "card_number":"XXXXXXXX",
          "exp_date":"0116"},
-      "bank_resp\_code":"100",
+      "bank_resp_code":"100",
       "bank_message":"Approved",
       "gateway_resp_code":"00",
       "gateway_message":"Transaction Normal"
