@@ -31,7 +31,7 @@ When creating an encryption key, Payeezy provides the following:
 
 The public key and the public key hash are provided in the Certs page of the Payeezy developer portal.
 
-Of the five items above, only the public key is required on order to communicate with Android Pay. The other four are used in communicating with Payeezy.
+Of the five items above, only the public key is required in order to communicate with Android Pay. The other four are used in communicating with Payeezy.
 
 # Application Flow
 
