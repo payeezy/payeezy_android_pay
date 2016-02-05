@@ -60,6 +60,7 @@ To create the MaskedWalletRequest we set the following two parameters:
 
 Sample MaskedWalletRequest Code:
 
+```java
       PaymentMethodTokenizationParameters parameters =
            PaymentMethodTokenizationParameters._newBuilder_()
              .setPaymentMethodTokenizationType(
@@ -71,15 +72,15 @@ Sample MaskedWalletRequest Code:
             // Other parameters
            .setPaymentMethodTokenizationParameters(parameters)
            .build();
-
+```
 ## Issuing Full Wallet Request
 
 We get the encrypted payload returned by Android Pay in the Full Wallet response, as a token. The data included in the token should be sent to the Payeezy server in order to process the transaction.
 
 The Full Wallet request uses the Masked Wallet retrieved in the previous step.
 
+```java
       FullWalletRequest fullWalletRequest = FullWalletRequest.newBuilder()
-
                   .setGoogleTransactionId(googleTransactionId)
                   .setCart(Cart._newBuilder_()
                       .setCurrencyCode(Constants.CURRENCY\_CODE\_USD)
@@ -91,12 +92,13 @@ The Full Wallet request uses the Masked Wallet retrieved in the previous step.
       Wallet.Payments.loadFullWallet(mGoogleApiClient,
                    fullWalletRequest,
                    REQUEST\_CODE\_RESOLVE\_LOAD\_FULL\_WALLET);
-
+```
 Once the Full Wallet is received, the Payment Method Token can be extracted and parsed:
 
+```java
       PaymentMethodToken token = fullWallet.getPaymentMethodToken();
       String tokenJSON = token.getToken();         // Get encrypted token
-
+```
 The returned token will be a UTF8 encoded serialized JSON dictionary with the following keys:
 
 | Name | Type | Description |
@@ -107,16 +109,13 @@ The returned token will be a UTF8 encoded serialized JSON dictionary with the fo
 
 For example:
 
+```java
 {
-
   "encryptedMessage": "ZW5jcnlwdGVkTWVzc2FnZQ==",
-
   "ephemeralPublicKey": "ZXBoZW1lcmFsUHVibGljS2V5",
-
   "tag":"c2lnbmF0dXJl"
-
 }
-
+```
 ## Issuing the Payeezy Request
 
 Once the Full Wallet is received and the token extracted and parsed, the Payeezy request can be created. Note that while the previous steps had to be completed on the mobile device, issuing the Payeezy request can be done from the mobile device or from a server that receives the Full Wallet token.
@@ -134,6 +133,7 @@ The request uses a REST POST message with a JSON payload. As mentioned before, t
 
 For a full explanation of the Payeezy API please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/apis](https://developer.payeezy.com/apis). Following is an example of a Payeezy request payload:
 
+```
 {
    "currency\_code":"USD",
    "amount":"10000",
@@ -150,7 +150,7 @@ For a full explanation of the Payeezy API please refer to the Payeezy Developer 
       "data":"ZW5jcnlwdGVkTWVzc2FnZQ=="
    }
 }
-
+```
 The following table describes the contents of the request fields:
 
 | Field | Description |
@@ -179,6 +179,7 @@ The request should include the following HTTP headers:
 
 The response from the Payeezy servers describes the results of the transaction. A sample response:
 
+```
 {
       "correlation\_id":"227.1448293118225",
       "transaction\_status":"approved",
@@ -199,5 +200,5 @@ The response from the Payeezy servers describes the results of the transaction. 
       "gateway\_resp\_code":"00",
       "gateway\_message":"Transaction Normal"
 }
-
+```
 For an explanation of the response fields please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/apis](https://developer.payeezy.com/apis).
