@@ -8,7 +8,7 @@ Once boarded, the application can be implemented and tested by sending requests 
 
 # Requirements
 
-Android version 4.4 (KitKat) or higher
+- Android version 4.4 (KitKat) or higher
 - The Android Pay application installed on the test device
 - The latest version of Google Play Services (8.4.xx)
 
@@ -60,30 +60,29 @@ To create the MaskedWalletRequest we set the following two parameters:
 
 Sample MaskedWalletRequest Code:
 
-```java
       PaymentMethodTokenizationParameters parameters =
            PaymentMethodTokenizationParameters._newBuilder_()
              .setPaymentMethodTokenizationType(
-                     PaymentMethodTokenizationType.NETWORK_TOKEN)
-             .addParameter( **"** publicKey **"** , Constants.FIRST_DATA_PUBLIC_KEY)
+                     PaymentMethodTokenizationType.NETWORK\_TOKEN)
+             .addParameter( **"** publicKey **"** , Constants.FIRST\_DATA\_PUBLIC\_KEY)
              .build();
 
       MaskedWalletRequest.Builder builder = MaskedWalletRequest.newBuilder()
             // Other parameters
            .setPaymentMethodTokenizationParameters(parameters)
            .build();
-```
+
 ## Issuing Full Wallet Request
 
 We get the encrypted payload returned by Android Pay in the Full Wallet response, as a token. The data included in the token should be sent to the Payeezy server in order to process the transaction.
 
 The Full Wallet request uses the Masked Wallet retrieved in the previous step.
 
-```java
       FullWalletRequest fullWalletRequest = FullWalletRequest.newBuilder()
+
                   .setGoogleTransactionId(googleTransactionId)
                   .setCart(Cart._newBuilder_()
-                      .setCurrencyCode(Constants.CURRENCY_CODE_USD)
+                      .setCurrencyCode(Constants.CURRENCY\_CODE\_USD)
                       .setTotalPrice(mAmount)
                       .setLineItems(lineItems)
                       .build())
@@ -91,14 +90,13 @@ The Full Wallet request uses the Masked Wallet retrieved in the previous step.
 
       Wallet.Payments.loadFullWallet(mGoogleApiClient,
                    fullWalletRequest,
-                   REQUEST_CODE_RESOLVE_LOAD_FULL_WALLET);
-```
+                   REQUEST\_CODE\_RESOLVE\_LOAD\_FULL\_WALLET);
+
 Once the Full Wallet is received, the Payment Method Token can be extracted and parsed:
 
-```java
       PaymentMethodToken token = fullWallet.getPaymentMethodToken();
       String tokenJSON = token.getToken();         // Get encrypted token
-```
+
 The returned token will be a UTF8 encoded serialized JSON dictionary with the following keys:
 
 | Name | Type | Description |
@@ -109,13 +107,16 @@ The returned token will be a UTF8 encoded serialized JSON dictionary with the fo
 
 For example:
 
-```java
 {
+
   "encryptedMessage": "ZW5jcnlwdGVkTWVzc2FnZQ==",
+
   "ephemeralPublicKey": "ZXBoZW1lcmFsUHVibGljS2V5",
+
   "tag":"c2lnbmF0dXJl"
+
 }
-```
+
 ## Issuing the Payeezy Request
 
 Once the Full Wallet is received and the token extracted and parsed, the Payeezy request can be created. Note that while the previous steps had to be completed on the mobile device, issuing the Payeezy request can be done from the mobile device or from a server that receives the Full Wallet token.
@@ -133,13 +134,12 @@ The request uses a REST POST message with a JSON payload. As mentioned before, t
 
 For a full explanation of the Payeezy API please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/apis](https://developer.payeezy.com/apis). Following is an example of a Payeezy request payload:
 
-```
 {
-   "currency_code":"USD",
+   "currency\_code":"USD",
    "amount":"10000",
-   "merchant_ref":"orderid",
+   "merchant\_ref":"orderid",
    "method":"3DS",
-   "transaction_type":"purchase",
+   "transaction\_type":"purchase",
    "3DS":{
       "header":{
         "publicKeyHash":"QAjHE+t/4YUVEUpoyZkkuNHJ8eap4= **",**
@@ -150,7 +150,7 @@ For a full explanation of the Payeezy API please refer to the Payeezy Developer 
       "data":"ZW5jcnlwdGVkTWVzc2FnZQ=="
    }
 }
-```
+
 The following table describes the contents of the request fields:
 
 | Field | Description |
@@ -179,36 +179,35 @@ The request should include the following HTTP headers:
 
 The response from the Payeezy servers describes the results of the transaction. A sample response:
 
-```
 {
-      "correlation_id":"227.1448293118225",
-      "transaction_status":"approved",
-      "validation_status":"success",
-      "transaction_type":"purchase",
-      "transaction_id":"222078",
-      "transaction_tag":"2283767",
+      "correlation\_id":"227.1448293118225",
+      "transaction\_status":"approved",
+      "validation\_status":"success",
+      "transaction\_type":"purchase",
+      "transaction\_id":"222078",
+      "transaction\_tag":"2283767",
       "method":"3ds",
       "amount":"1222",
       "currency":"USD",
       "card":{
          "type":"VISA",
-         "cardholder_name":"Not Provided",
-         "card_number":"XXXXXXXX",
-         "exp_date":"0116"},
-      "bank_resp_code":"100",
-      "bank_message":"Approved",
-      "gateway_resp_code":"00",
-      "gateway_message":"Transaction Normal"
+         "cardholder\_name":"Not Provided",
+         "card\_number":"XXXXXXXX",
+         "exp\_date":"0116"},
+      "bank\_resp\_code":"100",
+      "bank\_message":"Approved",
+      "gateway\_resp\_code":"00",
+      "gateway\_message":"Transaction Normal"
 }
-```
+
 For an explanation of the response fields please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/apis](https://developer.payeezy.com/apis).
 
-# Sample Application
-
-The sample application provided on GitHub demonstrates how the Payeezy API can be used to process Android Pay requests. 
-
-The application makes use of the [Volley library] (http://developer.android.com/training/volley/index.html) to issue REST requests to the Payeezy servers.
-
-The application requires the following permissions:
-- android.permission.INTERNET
-- android.permission.ACCESS_NETWORK_STATE
+ # Sample Application
+ 
+ The sample application provided on GitHub demonstrates how the Payeezy API can be used to process Android Pay requests. 
+ 
+ The application makes use of the [Volley library] (http://developer.android.com/training/volley/index.html) to issue REST requests to the Payeezy servers.
+ 
+ The application requires the following permissions:
+ - android.permission.INTERNET
+ - android.permission.ACCESS_NETWORK_STATE
