@@ -8,7 +8,7 @@ Once boarded, the application can be implemented and tested by sending requests 
 
 # Requirements
 
-- Android version 4.4 (KitKat) or higher
+Android version 4.4 (KitKat) or higher
 - The Android Pay application installed on the test device
 - The latest version of Google Play Services (8.4.xx)
 
@@ -202,3 +202,13 @@ The response from the Payeezy servers describes the results of the transaction. 
 }
 ```
 For an explanation of the response fields please refer to the Payeezy Developer Portal at [https://developer.payeezy.com/apis](https://developer.payeezy.com/apis).
+
+# Sample Application
+
+The sample application provided on GitHub demonstrates how the Payeezy API can be used to process Android Pay requests. 
+
+The application makes use of the [Volley library] (http://developer.android.com/training/volley/index.html) to issue REST requests to the Payeezy servers.
+
+The application requires the following permissions:
+- android.permission.INTERNET
+- android.permission.ACCESS_NETWORK_STATE
